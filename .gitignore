@@ -173,3 +173,12 @@ cython_debug/
 
 # Intermediate steps of schema management (.avdl and .avsc files).
 local_development/schema_management/*files*/
+
+# dlt
+.dlt/secrets.toml
+**/pipeline_data/
+
+# Dagster
+storage/
+schedules/
+logs/
