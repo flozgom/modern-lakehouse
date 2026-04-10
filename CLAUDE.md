@@ -32,6 +32,35 @@ docker compose down
 docker compose down -v
 ```
 
+## Dagster (Data Orchestration)
+
+The `lakehouse/` directory contains a Dagster project scaffolded with `dg`. It uses `dlt` to extract data and write Parquet files to MinIO.
+
+```bash
+cd lakehouse
+
+# Install dependencies (uses uv)
+uv sync --group dev
+
+# Copy dlt secrets and adjust if needed
+cp .dlt/secrets.toml.example .dlt/secrets.toml
+
+# Ensure infrastructure is running
+docker compose -f ../docker-compose.yml up -d
+
+# Launch Dagster dev UI
+uv run dagster dev
+
+# Materialize assets from CLI
+uv run dagster asset materialize --select kraken/ohlc
+```
+
+### dlt Configuration
+
+- `.dlt/config.toml` — destination config (filesystem/MinIO, parquet format)
+- `.dlt/secrets.toml` — credentials and source config (not committed)
+- `.dlt/secrets.toml.example` — template for secrets
+
 ## Status
 
-This repository is in early bootstrap phase — no application code, build system, or tests exist yet. The .gitignore is configured for Python.
+Bootstrap phase with Dagster + dlt extraction pipeline targeting MinIO.
