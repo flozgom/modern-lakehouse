@@ -1,0 +1,5 @@
+[destination.filesystem]
+bucket_url = "s3://ducklake/raw"
+
+[destination.filesystem.data_writer]
+file_format = "parquet"
