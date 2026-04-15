@@ -5,6 +5,8 @@ version = "0.1.0"
 dependencies = [
     "dagster==1.13.0",
     "dagster-dlt",
+    "dagster-duckdb",
+    "duckdb",
     "dlt[filesystem,parquet]",
     "pandas",
     "s3fs",
