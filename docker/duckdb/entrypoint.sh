@@ -1,3 +1,5 @@
 #!/bin/sh
-envsubst < /opt/duckdb/init-ducklake.sql > /tmp/init-ducklake.sql
+for f in /opt/duckdb/*.sql; do
+    envsubst < "$f" > "/tmp/$(basename "$f")"
+done
 exec duckdb "$@"

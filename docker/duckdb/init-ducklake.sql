@@ -18,3 +18,17 @@ CREATE SECRET minio_secret (
 ATTACH 'ducklake:postgres:dbname=${POSTGRES_DB} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} host=postgres port=5432' AS ducklake (
     DATA_PATH 's3://${MINIO_BUCKET}/ducklake'
 );
+
+USE ducklake;
+
+CREATE TABLE IF NOT EXISTS ducklake.ohlc (
+    time_stamp BIGINT,
+    open DOUBLE,
+    high DOUBLE,
+    low DOUBLE,
+    close DOUBLE,
+    vwap DOUBLE,
+    volume DOUBLE,
+    count BIGINT,
+    pair VARCHAR
+);

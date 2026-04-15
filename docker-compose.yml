@@ -46,6 +46,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres/init-silver.sql:/docker-entrypoint-initdb.d/init-silver.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ducklake}"]
       interval: 5s
@@ -69,6 +70,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-ducklake}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ducklake}
       POSTGRES_DB: ${POSTGRES_DB:-ducklake}
+    volumes:
+      - ./lakehouse/src/lakehouse/defs/loading/upsert_ohlc_silver.sql:/opt/duckdb/upsert_ohlc_silver.sql:ro
     stdin_open: true
     tty: true
     profiles:
