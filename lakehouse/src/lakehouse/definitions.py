@@ -6,9 +6,11 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).resolve().parents[3] / ".env")
 
 from dagster import Definitions, EnvVar, definitions, load_from_defs_folder
+from dagster_dbt import DbtCliResource
 from dagster_dlt import DagsterDltResource
 
 from lakehouse.defs.loading.resources import DuckLakeResource
+from lakehouse.defs.transform.dbt_assets import dbt_project
 
 
 @definitions
@@ -19,6 +21,7 @@ def defs():
         resources={
             **(loaded.resources or {}),
             "dlt": DagsterDltResource(),
+            "dbt": DbtCliResource(project_dir=dbt_project),
             "ducklake": DuckLakeResource(
                 minio_user=EnvVar("MINIO_ROOT_USER"),
                 minio_password=EnvVar("MINIO_ROOT_PASSWORD"),

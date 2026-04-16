@@ -10,7 +10,7 @@ def ohlc_silver(context, ducklake: DuckLakeResource):
     """Upsert OHLC from DuckLake into PostgreSQL silver layer."""
     with ducklake.get_connection() as conn:
         conn.execute(f"""
-            ATTACH 'postgres:{ducklake._postgres_conn_string}'
+            ATTACH '{ducklake._postgres_conn_string}'
             AS pg (TYPE POSTGRES)
         """)
         conn.execute("CALL postgres_execute('pg', 'CREATE SCHEMA IF NOT EXISTS silver')")

@@ -7,7 +7,7 @@ LOAD_SQL = (Path(__file__).parent / "load_ohlc.sql").read_text()
 
 
 @asset(
-    deps=[AssetKey(["kraken", "ohlc"])],
+    deps=[AssetKey("dlt_kraken_source_ohlc")],
     group_name="loading",
 )
 def ohlc_ducklake(context, ducklake: DuckLakeResource):

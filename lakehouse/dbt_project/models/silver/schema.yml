@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: ohlc_daily
+    description: "Daily aggregated OHLC candles per trading pair"
+    columns:
+      - name: pair
+        tests:
+          - not_null
+      - name: trade_date
+        tests:
+          - not_null
+      - name: open
+        tests:
+          - not_null
+      - name: high
+        tests:
+          - not_null
+      - name: low
+        tests:
+          - not_null
+      - name: close
+        tests:
+          - not_null
+    tests:
+      - unique:
+          column_name: "pair || '-' || trade_date"

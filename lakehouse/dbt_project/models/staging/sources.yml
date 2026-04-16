@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: ducklake
+    database: ducklake
+    schema: main
+    tables:
+      - name: ohlc
+        meta:
+          dagster:
+            asset_key: ["ohlc_ducklake"]

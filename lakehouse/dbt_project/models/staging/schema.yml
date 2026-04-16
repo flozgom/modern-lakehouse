@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_ohlc
+    description: "Staging view over DuckLake OHLC data"
+    columns:
+      - name: pair
+        tests:
+          - not_null
+      - name: time_stamp
+        tests:
+          - not_null
