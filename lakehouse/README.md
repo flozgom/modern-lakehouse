@@ -1,5 +1,10 @@
 # lakehouse
 
+[![Python >= 3.12](https://img.shields.io/badge/python-%3E%3D3.12-blue)](https://www.python.org/)
+[![DuckDB](https://img.shields.io/badge/DuckDB-1.5-blue)](https://duckdb.org/)
+[![DuckLake](https://img.shields.io/badge/DuckLake-0.4-blue)](https://ducklake.select/)
+[![License: MIT](https://img.shields.io/github/license/berndsen-io/ducklake-hetzner)](LICENSE)
+
 ## Getting started
 
 ### Installing dependencies
